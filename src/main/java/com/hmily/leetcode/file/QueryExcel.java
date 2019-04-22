@@ -101,10 +101,10 @@ public class QueryExcel {
 
             while (flag < 2) {
                 Cell cell = rowHead.getCell(flag);
-                if (ExcelgetRightTypeCellUtil.getRightTypeCell(cell).toString().equals("型号")) {
+                if (ExcelgetRightTypeCellUtil.getRightTypeCell(cell, Cell.CELL_TYPE_NUMERIC -1).toString().equals("型号")) {
                     headMap.put("model", flag);
                 }
-                if (ExcelgetRightTypeCellUtil.getRightTypeCell(cell).toString().equals("数量")) {
+                if (ExcelgetRightTypeCellUtil.getRightTypeCell(cell, Cell.CELL_TYPE_NUMERIC -1).toString().equals("数量")) {
                     headMap.put("num", flag);
                 }
                 flag++;
@@ -141,13 +141,13 @@ public class QueryExcel {
             Double num = null;
 
             try {
-                if (null != ExcelgetRightTypeCellUtil.getRightTypeCell(cell_model)) {
-                    model = (String) ExcelgetRightTypeCellUtil.getRightTypeCell(cell_model);
+                if (null != ExcelgetRightTypeCellUtil.getRightTypeCell(cell_model, Cell.CELL_TYPE_NUMERIC -1)) {
+                    model = (String) ExcelgetRightTypeCellUtil.getRightTypeCell(cell_model, Cell.CELL_TYPE_NUMERIC -1);
                 } else {
                     throw new RuntimeException("第 " + i + " 行型号名称必填！");
                 }
-                if (null != ExcelgetRightTypeCellUtil.getRightTypeCell(cell_num)) {
-                    num = (Double) ExcelgetRightTypeCellUtil.getRightTypeCell(cell_num);
+                if (null != ExcelgetRightTypeCellUtil.getRightTypeCell(cell_num, Cell.CELL_TYPE_NUMERIC -1)) {
+                    num = (Double) ExcelgetRightTypeCellUtil.getRightTypeCell(cell_num, Cell.CELL_TYPE_NUMERIC -1);
                 } else {
                     errorInfo.add("第 " + i + " 行数量必填！");
                 }
